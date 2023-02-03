@@ -26,7 +26,4 @@ export class User{
     @OneToMany(()=>Review,(review)=>review.user)
     reviews:Review[];
 
-    @ManyToMany(type => Product, product => product.purchasers)
-    @JoinTable()
-    purchasedProducts: Product[];
 }

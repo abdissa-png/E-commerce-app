@@ -10,6 +10,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/User';
 import { Product } from './entities/Product';
 import { Review } from './entities/Review';
+import { ConfigModule } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
+import { AtGuard } from './common/guards';
+import { Purchase } from './entities/Purchase';
 
 
 @Module({
@@ -21,11 +25,14 @@ import { Review } from './entities/Review';
     password: "",
     database: "ecommerce",
     entities: [
-        User,Product,Review
+        User,Product,Review,Purchase
     ],
     synchronize: true
-})],
+}),ConfigModule.forRoot({ isGlobal: true })],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,{
+    provide: APP_GUARD,
+    useClass: AtGuard,
+  },],
 })
 export class AppModule {}
