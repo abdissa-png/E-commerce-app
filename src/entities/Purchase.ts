@@ -1,10 +1,13 @@
 /* eslint-disable prettier/prettier */
-import { BeforeInsert, Column, Entity, ManyToOne } from "typeorm";
+import { BeforeInsert, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Product } from "./Product";
 import { User } from "./User";
 
 @Entity({name:"purchase"})
 export class Purchase {
+    @PrimaryGeneratedColumn({type:"bigint"})
+    id:number;
+
   @ManyToOne(type => User, user => user.id)
   user: User;
 
