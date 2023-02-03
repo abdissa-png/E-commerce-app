@@ -25,14 +25,14 @@ export class AuthService {
                 sub:userId,
                 email
             },{
-                secret:'at-secret',
+                secret:this.config.get<string>('AT_SECRET'),
                 expiresIn:60*15,
             }),
             this.jwtService.signAsync({
                 sub:userId,
                 email
             },{
-                secret:'rt-secret',
+                secret:this.config.get<string>('RT_SECRET'),
                 expiresIn:60*60*24*7,
             })
         ])
@@ -71,6 +71,7 @@ export class AuthService {
         await this.userRepository.update(userId,{hashedRt:null})
         return true;
     }
+    
     async refreshTokens(userId:number,rt:string){
         const user=await this.userRepository.findOneBy({id:userId});
         if(!user || !user.hashedRt) throw new HttpException("Access Denied!",HttpStatus.FORBIDDEN);
