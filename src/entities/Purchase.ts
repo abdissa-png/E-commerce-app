@@ -16,7 +16,13 @@ export class Purchase {
 
   @Column()
   date: Date;
+ //addition 
+  @Column()
+  userId: number;
 
+  @Column()
+  productId: number;
+//end Addition
   @BeforeInsert()
   setDate() {
     this.date = new Date();
