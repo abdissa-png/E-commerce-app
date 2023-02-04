@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-var */
+/* eslint-disable prefer-const */
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from 'src/entities/Product';
@@ -47,7 +50,8 @@ export class UserService {
         var cartt= [];
         for(i=0; i<cart.length; i++){
         it = cart[i].productId
-        cartt.push(await this.productRepository.findOneBy({id: it}));
+        const product=await this.productRepository.findOneBy({id: it});
+        cartt.push({...product,quantity:cart[i].quantity});
         }
         return cartt;
     }

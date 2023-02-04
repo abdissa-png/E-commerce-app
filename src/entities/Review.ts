@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./User";
-import { IsEmpty, isEmpty } from "class-validator";
+import { IsEmpty } from "class-validator";
 
 @Entity({name:"reviews"})
 export class Review{

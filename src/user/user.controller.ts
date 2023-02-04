@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Controller, Delete, Get, Patch, Post, Param, ParseIntPipe, Body } from '@nestjs/common';
 import { reviewdto } from './dtos/review.dto';
 import { UserService } from './user.service';
