@@ -22,7 +22,13 @@ export class Purchase {
 
   @Column()
   productId: number;
+
+  @Column({default: 1})
+  quantity: number;
+  
 //end Addition
+
+
   @BeforeInsert()
   setDate() {
     this.date = new Date();

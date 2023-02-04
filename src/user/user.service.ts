@@ -23,9 +23,18 @@ export class UserService {
         if (!user || !product) {
           throw new Error('User or product not found');
         }
+        const cart = await this.purchaseRepository.findBy({userId:userId, productId: productId});
+        
+        if(cart.length == 0){
+
+        
     
         const purchase = await  this.purchaseRepository.create({ user, product });
-        await this.purchaseRepository.save(purchase);
+        await this.purchaseRepository.save(purchase);}
+        else{
+           let quantity = cart[0].quantity+1;
+           await this.purchaseRepository.update({userId:userId, productId: productId},{quantity});
+        }
       }
     
     async viewCart(id: number){//retriev purchasedproduct in user entity
