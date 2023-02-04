@@ -21,7 +21,7 @@ export class UserService {
         const product = await this.productRepository.findOneBy({ id: productId });
     
         if (!user || !product) {
-          throw new Error('User or product not found');
+            throw new HttpException('user or product not found', HttpStatus.BAD_REQUEST);
         }
         const cart = await this.purchaseRepository.findBy({userId:userId, productId: productId});
         
@@ -31,9 +31,11 @@ export class UserService {
     
         const purchase = await  this.purchaseRepository.create({ user, product });
         await this.purchaseRepository.save(purchase);}
-        else{
+        else if(cart.length == 1){
            let quantity = cart[0].quantity+1;
            await this.purchaseRepository.update({userId:userId, productId: productId},{quantity});
+        }else{
+            throw new HttpException('something went wrong', HttpStatus.BAD_REQUEST); 
         }
       }
     
