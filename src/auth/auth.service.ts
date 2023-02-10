@@ -46,17 +46,17 @@ export class AuthService {
         const hash=await this.hashData(rt);
         await this.userRepository.update(userId,{hashedRt:hash});
     }
-    async signup(dto:AuthDto):Promise<tokens>{
+    async signup(dto:AuthDto):Promise<any>{
         const hash=await this.hashData(dto.password)
         const newUser=this.userRepository.create({...dto,hash:hash});
         const savedUser=await this.userRepository.save(newUser).catch((error)=>{
-            return error.message;
+            throw new HttpException("Internal Server Error",HttpStatus.INTERNAL_SERVER_ERROR);
         });
         const tokens=await this.getTokens(newUser.id,newUser.email)
         await this.updateRtHash(newUser.id,tokens.refresh_token)
         return tokens;
     }
-    async signin(dto:AuthDto):Promise<tokens>{
+    async signin(dto:AuthDto):Promise<any>{
         const email=dto.email;
         const user=await this.userRepository.findOneBy({email});
         if(!user) throw new HttpException("Access Denied!",HttpStatus.FORBIDDEN);
