@@ -22,7 +22,5 @@ export class Product{
     @Column({nullable:true})
     discountedPrice:string
 
-    @ManyToMany(type => User, user => user.purchasedProducts)
-    purchasers: User[];
 
 }
