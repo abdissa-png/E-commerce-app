@@ -14,6 +14,10 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { AtGuard } from './common/guards';
 import { Purchase } from './entities/Purchase';
+import { UserController } from './user/user.controller';
+import { ProductsController } from './products/products.controller';
+import { AuthController } from './auth/auth.controller';
+import { ReviewsController } from './reviews/reviews.controller';
 
 @Module({
   imports: [

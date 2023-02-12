@@ -8,7 +8,7 @@ import { RtGuard } from 'src/common/guards';
 import { GetCurrentUser } from 'src/common/decorators/get-current-user.decorator';
 import { Response } from 'express';
 
-@Controller('auth')
+@Controller('api/v1/auth')
 export class AuthController {
     constructor(private authService:AuthService){
 
@@ -19,8 +19,8 @@ export class AuthController {
     @HttpCode(HttpStatus.CREATED)
     async signup(@Body() dto:AuthDto,@Res({ passthrough: true }) res:Response){
         await this.authService.signup(dto).then((tokens)=>{
-          res.cookie('auth-cookie',tokens.access_token,{httpOnly:true});
-          res.cookie('refresh-cookie',tokens.refresh_token,{httpOnly:true})
+          res.cookie('auth-cookie',tokens.access_token,{httpOnly:false});
+          res.cookie('refresh-cookie',tokens.refresh_token,{httpOnly:false})
         }).catch((error:HttpException)=>{
           throw new HttpException(error.getResponse(),error.getStatus())
         });
@@ -31,8 +31,8 @@ export class AuthController {
     @HttpCode(HttpStatus.OK)
     async signin(@Body() dto:AuthDto,@Res({ passthrough: true }) res:Response){
         await this.authService.signin(dto).then((tokens)=>{
-          res.cookie('auth-cookie',tokens.access_token,{httpOnly:true});
-          res.cookie('refresh-cookie',tokens.refresh_token,{httpOnly:true})
+          res.cookie('auth-cookie',tokens.access_token,{httpOnly:false});
+          res.cookie('refresh-cookie',tokens.refresh_token,{httpOnly:false})
         }).catch((error:HttpException)=>{
           throw new HttpException(error.getResponse(),error.getStatus())
         });
@@ -54,8 +54,8 @@ export class AuthController {
       @Res({ passthrough: true }) res:Response
     ){
       await this.authService.refreshTokens(userId, refreshToken).then((tokens)=>{
-        res.cookie('auth-cookie',tokens.access_token,{httpOnly:true});
-        res.cookie('refresh-cookie',tokens.refresh_token,{httpOnly:true})
+        res.cookie('auth-cookie',tokens.access_token,{httpOnly:false});
+        res.cookie('refresh-cookie',tokens.refresh_token,{httpOnly:false})
       }).catch((error:HttpException)=>{
         throw new HttpException(error.getResponse(),error.getStatus())
       });

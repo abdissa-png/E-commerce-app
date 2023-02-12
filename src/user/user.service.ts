@@ -44,7 +44,6 @@ export class UserService {
     
     async viewCart(id: number){//retriev purchasedproduct in user entity
         const cart = await this.purchaseRepository.findBy({userId:id});
-        console.log(`cart is ${cart}`);
         var it : number;
         var i : number;
         var cartt= [];
@@ -55,21 +54,12 @@ export class UserService {
         }
         return cartt;
     }
+    async getReview(id:number){
+        return await this.reviewRepository.findOneBy({id});
+    }
     async viewReviews(id: number){//retrieve reviews at user
-        // console.log(`id is ${id} done`);
-        // const users = await this.userRepository.find({relations: ['reviews']});
-        // console.log('user')
-        
-        // var i:number;
-        // for(i= 0; i<users.length; i++){
-        //     if(!users[i]){
-        //         throw new HttpException('user not found', HttpStatus.BAD_REQUEST);
-        // }
-        // if(users[i].id == id){
-        //     return }
-        // };
+
         const user = await this.userRepository.findOneBy({id});
-        console.log(user);
 
         const reviews = await this.reviewRepository.findBy({userId: id});
         return reviews;
@@ -81,19 +71,7 @@ export class UserService {
        
         
 
-        // const user = await this.userRepository.findOneBy(userId, {
-        //     relations: ['reviews'],
-        //   });
-        //   return user.reviews;
         
-
-        
-          
-    //     if(!user){
-    //         throw new HttpException('user not found', HttpStatus.BAD_REQUEST);
-    // }
- 
-    //    return this.reviewRepository.findBy({user: user});
        
             
     }
@@ -105,7 +83,6 @@ export class UserService {
                 throw new HttpException('user not found', HttpStatus.BAD_REQUEST);
         }
         const newReview = this.reviewRepository.create({...reviewDetails, user, });
-        console.log(newReview);
         return this.reviewRepository.save(newReview);
       
     }

@@ -1,88 +1,74 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" type="text/css" href="/assets/fonts/css/all.css">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/fonts/css/all.css">
 
 
-        <link rel="stylesheet" href="/assets/main.css">
-        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <title>E-commerce website</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <title>E-commerce Website</title>
 
-    </head>
-    <body class="bg-dark text-secondary">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top" >
-            <a href=#home class="navbar-brand"><img src="/assets/img/logo.png" alt="the images of shew's logo"  width="150px"></a>
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navmenu">
+</head>
+
+<body class="bg-dark text-secondary">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+        <a href="/index.html" class="navbar-brand"><img src="/assets/img/logo.png" alt="the images of shew's logo" width="150px"></a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navmenu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link p-4  text-light">Home</a>
-                    </li>
-                  
-                    </li>
-                    <li class="nav-item">
-                        <a href="about.html" class="nav-link p-4  text-light" >About</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a href="contact.html" class="nav-link p-4  text-light">Contact</a>
-                    </li>
-                    </li>
-                    <li class="nav-item">
-                        <a href="login.html" class="nav-link  p-4  text-light"><i class="fa fa-light fa-user"></i></a> 
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <section class="btn-light " >
-            <div class="form-group mt-5 text-start p-5 " >
-                <form action="" id="form"  class=" mt-5 row d-flex align-items-center justify-content-center" >
-                    <div class="form-group row m-3 ">
-                        <label for="email" class="  offset-sm-3 text-light col-sm-2   col-form-label">email</label>
-                        <div class=" col-sm-4 ">
-                            <input type="text" placeholder="email" id="email" class=" form-control "  ></div>
-                        <div id="errname"></div>
-                    </div>
-                    <div class="form-group row m-3">
-                        <label for="password" class="  offset-sm-3 text-light col-sm-2  col-form-label"> Password:</label>
-                        <div class="col-sm-4  ">
-                            <input type="email" placeholder="password" id="password" class=" form-control  " ><br><br>
-                        </div>
-                        <div id="erremail"></div>
-                    </div>
-                    <div class="form-group row m-1">
-                        <label for="password" class="  offset-sm-3 text-light col-sm-2  col-form-label"> confirm Password:</label>
-                        <div class="col-sm-4  ">
-                            <input type="email" placeholder=" confirm password" id="password" class=" form-control  " ><br><br>
-                        </div>
-                        <div id="erremail"></div>
-                    </div>
-                    <div class="form-group row mb-3">
-                        <label for="address" class="  offset-sm-3 text-light col-sm-2  col-form-label">Address:</label>
-                        <div class="col-sm-4  ">
-                            <input type="email" placeholder="where are you☺️" id="address" class=" form-control  " ><br><br>
-                        </div>
-                        <div id="erremail"></div>
-                    </div>
-                    <div class="form-group row mb-3">
-                        <label for="number" class="  offset-sm-3 text-light col-sm-2  col-form-label">number</label>
-                        <div class="col-sm-4  ">
-                            <input type="number" placeholder="phone number" id="number" class=" form-control  " ><br><br>
-                        </div>
-                        <div id="erremail"></div>
-                    </div>
-                  
-                    <input class=" btn btn btn-warning m-2 col-sm-2"  type="submit" value="sign up " id="submit" onclick="Validateform()"><br>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link p-4  text-light">Home</a>
+                </li>
 
-                </form>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link p-4  text-light">About</a>
+                </li>
 
-            </div>
-        </section>
-    </body>
-    </html>
+                <li class="nav-item">
+                    <a href="review.html" class="nav-link p-4  text-light">Review</a>
+                </li>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section class="btn-light ">
+        <div class="form-group mt-5 text-start p-5 ">
+            <form action="POST" id="form" class=" mt-5 row d-flex align-items-center justify-content-center">
+                <div class="form-group row m-3 ">
+                    <label for="email" class="  offset-sm-3 text-light col-sm-2   col-form-label">Email:</label>
+                    <div class=" col-sm-4 ">
+                        <input type="email" placeholder="email" name="email" id="email" class=" form-control ">
+                    </div>
+                </div>
+                <div class="form-group row m-3">
+                    <label for="password" class="  offset-sm-3 text-light col-sm-2  col-form-label"> Password:</label>
+                    <div class="col-sm-4  ">
+                        <input type="password" placeholder="password" name="password" id="password" class=" form-control  "><br><br>
+                    </div>
+                </div>
+                <div class="form-group row m-1">
+                    <label for="confirmPassword" class="  offset-sm-3 text-light col-sm-2  col-form-label"> Confirm Password:</label>
+                    <div class="col-sm-4  ">
+                        <input type="password" placeholder="Confirm password" name="confirmPassword" id="confirmPassword" class=" form-control  "><br><br>
+                    </div>
+                    <div id="errMsg"></div>
+                </div>
+
+                <input class=" btn btn btn-warning m-2 col-sm-2" type="submit" value="Sign Up" id="submit"><br>
+
+            </form>
+
+        </div>
+    </section>
+    <script src="assets/js/signup.js"></script>
+</body>
+
+</html>
